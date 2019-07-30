@@ -1,0 +1,10 @@
+notes-app
+    /app
+        /controllers
+            notesController.js
+        /model
+            /note.js
+    /config 
+        /database.js
+        /routes.js
+index.js

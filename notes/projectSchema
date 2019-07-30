@@ -1,0 +1,22 @@
+User{
+    _id
+    userName - String - required 
+    email - String - validation -required
+    password - String - required - validation
+    mobileNumber [] - array, string  - length - 10 , number
+    microManager - Boolean
+    createdAt - Date, default - Date.now()
+    }
+
+Group{
+    _id
+    groupName - String - required
+    groupDescription - String 
+    chatBody - Web Sockets
+    monitorUser - Schema.Types.ObjectId
+    createdAt - Date, default - Date.now()
+    }
+levelOneParticipents {
+    GroupId-Schema.Types.ObjectId, micro_id},{}
+    }
+        
