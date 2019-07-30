@@ -21,7 +21,7 @@ class NotesList extends React.Component {
     
     render(){
         return (
-            <div className = "container">
+            <div className = "container ">
                 <h2>Listing Notes - {this.state.notes.length}</h2>
                 <ul>
                     {this.state.notes.map(note => {

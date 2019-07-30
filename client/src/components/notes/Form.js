@@ -66,8 +66,8 @@ class NotesForm extends React.Component{
 
     render() {
         return (
-            <div className="container form-group offset-md-2 col-md-4 border border-primary">
-                <form onSubmit={this.handleSubmit}>
+            <div style={{maxWidth:"500px"}}className="container form-group nav justify-content-center border border-primary">
+                <form style = {{marginTop:"10px",marginBottom:"10px"}}  onSubmit={this.handleSubmit}>
                         <label>
                             <select className = "form-control" value={this.state.category} name="category" onChange={this.handleChange}>
                                 <option value="">Categories</option>
@@ -75,19 +75,19 @@ class NotesForm extends React.Component{
                                     return <option key={category._id}value={category._id} >{category.name}</option>
                                 })}
                             </select>                    
-                        </label>
+                        </label><br/>
                         <label >
                             <input className="form-control form-control-lg" type="text" placeholder = "Title" value={this.state.title} onChange={this.handleChange} name="title" />
-                        </label>
+                        </label><br/>
                         <label>
                         <textarea className="form-control" placeholder = "Body" value= {this.state.body} onChange = {this.handleChange} name="body"  rows="3"/>
                         </label><br />
                         <label>
                             {this.state.tags.map(tag => {
-                                return <label key = {tag._id}> 
-                                <input className = "font-weight-bold text-uppercase  form-check-inline" type = 'checkbox' onClick={() => {
+                                return <label className="checkbox-inline nav nav-pills" key = {tag._id}> 
+                                <input type = 'checkbox' onClick={() => {
                                     this.handleTagSelection(tag)
-                                }}/> {tag.name}
+                                }}/> <h6>{tag.name}</h6>
                                 </label>
                             })}
                         </label><br />
