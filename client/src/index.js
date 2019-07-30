@@ -15,7 +15,7 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div>
-                    <h2 className="align-middle font-italic font-weight-bold shadow-lg p-3 mb-5 bg-warning rounded mx-auto" >My Notes App</h2>
+                    <center><h2 Script={{textAlign:'centre'}}className="align-middle font-italic font-weight-bold shadow-lg p-3 mb-5 bg-warning rounded mx-auto" >My Notes App</h2></center>
                     <Link class="container btn btn-primary btn-lg btn-block"  to ="/notes"><h3>List Notes</h3></Link><br />
                     <Link class="container btn btn-secondary btn-lg btn-block"  to ="/category"><h3>List Category</h3></Link><br />
                     <Switch>
