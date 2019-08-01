@@ -4,8 +4,8 @@ import axios from '../../config/axios'
 
 
 class NotesLogin extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             email:'',
             password:''
@@ -25,17 +25,20 @@ class NotesLogin extends React.Component{
             email:this.state.email,
             password:this.state.password
         }
-        console.log(formData)
-        axios.post(`/users/login`,formData)
+        axios.post(`/user/login`,formData)
         .then(response=>{
             if(response.data.errors){
                 alert(response.data.errors)
             }else{
                 const token=response.data.token
-                localStorage.setItem('userAuthToken',token)
-                this.props.handleAuth(true)
-                this.props.history.push('/user/account') 
+                if(token){
+                    localStorage.setItem('userAuthToken',token)
+                    this.props.handleAuth(true)
+                }
             }
+        })
+        .catch(err =>{
+            alert('err')
         })
 
     }

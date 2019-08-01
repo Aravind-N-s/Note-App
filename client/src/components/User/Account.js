@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import axios from '../../config/axios';
 
 class NotesAccount extends React.Component{
@@ -10,13 +11,12 @@ class NotesAccount extends React.Component{
     }
     // tokens are sending to server
     componentDidMount(){
-        axios.get(`/users/account`,{
+        axios.get(`/user/account`,{
             headers:{
                 'x-auth':localStorage.getItem('userAuthToken')
             }
         }) 
         .then (response=>{
-            console.log(response.data)
             const user=response.data
             this.setState({user}) //when our current value doesn't depend on previous value, that time 
             //else use () =>{}
@@ -24,14 +24,10 @@ class NotesAccount extends React.Component{
     }
     render(){
         return(
-            <div>
-                <h2>User Account</h2>
-                <hr></hr>
-                <div className="card" style={{width:"400px"}}>
-                    <div className="card-body">
-                        <h4 id="center" className="card-title">{this.state.user.username}</h4>
-                    </div>
-               </div> 
+            <div className = "bg-success" >
+                <h6 className="text-weight-bold">User Account</h6>
+                    <h4 className="container bg-white text-dark text-weight-bold text-capitalize">{this.state.user.username}</h4>
+               <Link className="btn btn-success" to="logout">Logout</Link> 
             </div>
         )
     }

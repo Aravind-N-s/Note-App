@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const _ = require('lodash')
 const { User } = require('../models/User')
 const {authenticateUser} = require('../middlewares/authentication')
 
@@ -9,7 +10,8 @@ router.post('/register', (req,res) => {
     const user = new User(body)
     user.save()
         .then(user => {
-            res.json(user)
+            // res.json(user)
+            res.send(_.pick(user, ['_id','username','email','createdAt']))
         })
         .catch(err =>{
             res.send(err)
@@ -35,7 +37,8 @@ router.post('/login', (req,res) =>{
 //localhost:3005/users/account
 router.get('/account',authenticateUser, (req,res)=>{
     const {user} = req
-    res.send(user)
+    // res.send(user)
+    res.send(_.pick(user, ['_id','username','email','createdAt']))
 })
 //localhost:3005/users/logout
 router.delete('/logout',authenticateUser, (req,res) =>{

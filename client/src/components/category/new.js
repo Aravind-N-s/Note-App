@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './node_modules/react'
 import CategoryForm from './form'
 import axios from '../../config/axios';
 

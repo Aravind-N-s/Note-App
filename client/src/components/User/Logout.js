@@ -4,17 +4,15 @@ import axios from '../../config/axios';
 class NotesLogout extends React.Component{
     
     componentDidMount(){
-        console.log('am in logout')
-        axios.delete(`/users/logout`,{
+        axios.delete(`/user/logout`,{
         headers:{
             'x-auth':localStorage.getItem('userAuthToken')
         }
         })
         .then(response=>{
             localStorage.removeItem('userAuthToken')
-            console.log(response.data)
             this.props.handleAuth(false)
-            this.props.history.push('/users/login')
+            this.props.history.push('/login')
         })
     }
     render(){

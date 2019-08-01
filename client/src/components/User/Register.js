@@ -32,11 +32,11 @@ class NotesRegister extends React.Component{
             if(response.data.errors){
                 alert(response.data.message)
             }else{
-                this.props.history.push('/login')
+                this.props.history.push('')
             }
         })
         .catch(err=> {
-            console.log(err)
+            alert(err)
         })
     }
 
