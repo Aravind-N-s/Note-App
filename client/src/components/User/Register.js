@@ -26,13 +26,13 @@ class NotesRegister extends React.Component{
             email:this.state.email,
             password:this.state.password
         }
-        // console.log(formData)
+        console.log(formData)
         axios.post(`/user/register`,formData)
         .then(response=>{
             if(response.data.errors){
                 alert(response.data.message)
             }else{
-                this.props.history.push('/User/Login')
+                this.props.history.push('/login')
             }
         })
         .catch(err=> {
@@ -41,12 +41,11 @@ class NotesRegister extends React.Component{
     }
 
     render(){
-        return(
-            <form className="form-group" onSubmit={this.handleSubmit}>
+        return(         
+            <form className="form-group container" onSubmit={this.handleSubmit}>
                 <fieldset>  
                     <h2 className="text-dark">REGISTER</h2>
                     <label>
-                       
                         <input className = "form-control" type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="Username"/>
                     </label><br/>
                     <label>
@@ -55,7 +54,7 @@ class NotesRegister extends React.Component{
                     <label>                                
                         <input className = "form-control" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
                     </label><br/>
-                    <input className="btn btn-dark" type="submit" value="submit"/>
+                    <input className="btn btn-dark" type="submit" value="Submit"/>
                 </fieldset>
             </form>
         )

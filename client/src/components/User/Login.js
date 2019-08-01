@@ -25,7 +25,7 @@ class NotesLogin extends React.Component{
             email:this.state.email,
             password:this.state.password
         }
-        // console.log(formData)
+        console.log(formData)
         axios.post(`/users/login`,formData)
         .then(response=>{
             if(response.data.errors){
@@ -41,15 +41,15 @@ class NotesLogin extends React.Component{
     }
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="container" onSubmit={this.handleSubmit}>
+                <h2 className="text-dark">LOGIN</h2>
                 <label>
                     <input className = "form-control" type="text" name="email" value={this.state.email}  onChange={this.handleChange} placeholder="Email"/>
-                </label>                  
-                <label>                                
+                </label><br/>               
+                <label>                               
                     <input className = "form-control" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
-                </label>
+                </label><br />
                 <input className = "btn btn-success" type="submit"/><br />
-                <h4 className="text-muted">OR</h4>
             </form>
         )
     }

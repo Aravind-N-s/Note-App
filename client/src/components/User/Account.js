@@ -19,7 +19,7 @@ class NotesAccount extends React.Component{
             console.log(response.data)
             const user=response.data
             this.setState({user}) //when our current value doesn't depend on previous value, that time 
-
+            //else use () =>{}
         })
     }
     render(){
