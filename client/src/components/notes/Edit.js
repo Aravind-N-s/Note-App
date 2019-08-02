@@ -1,10 +1,9 @@
-import React from './node_modules/react'
+import React from 'react'
 import NoteForm from './Form'
 import axios from '../../config/axios';
 
 class NoteEdit extends React.Component{
     constructor(props){
-        console.log('notes constructor')
         super(props)
         this.state = {
             note: {}
@@ -13,7 +12,11 @@ class NoteEdit extends React.Component{
     }
     componentDidMount(){
         const id = this.props.match.params.id
-        axios.get(`/notes/${id}`)
+        axios.get(`/notes/${id}`,{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
         .then(response=>{
             this.setState(() => ({
                 note: response.data
@@ -21,7 +24,11 @@ class NoteEdit extends React.Component{
         })
     }
     handleSubmit(formData){
-        axios.put(`/notes/${this.state.note._id}`,formData)
+        axios.put(`/notes/${this.state.note._id}`,formData,{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
             .then(response =>{
                 if(response.data.hasOwnProperty('errors')){
                     console.log(response.data.errors)
@@ -32,7 +39,6 @@ class NoteEdit extends React.Component{
             })
     }
     render(){
-        console.log('notes render')
         return(
             <div>
                 <h2>Edit Here</h2>

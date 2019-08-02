@@ -1,6 +1,8 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from '../../config/axios'
-import {Link} from './node_modules/react-router-dom'
+import {Link} from 'react-router-dom'
+
+import CategoryEdit from "./Edit";
 
 class CategoryList extends React.Component{
     constructor(){
@@ -21,9 +23,9 @@ class CategoryList extends React.Component{
     render(){
         return(
             <div className = "container">   
-                <ul className = "list-group">
+                <ul style={{textTransform: "capitalize"}} className = "list-group">
                     {this.state.category.map(categories => {
-                        return <li className = "list-group-item col px-md-5" key={categories._id}>{categories.name}</li>
+                        return <li className = "list-group-item col-sm-4" key={categories._id}>{categories.name} <CategoryEdit/></li>
                     })}
                 </ul><br />
                 <Link className = "btn btn-secondary" to={'/category/new'}>New Categories</Link>

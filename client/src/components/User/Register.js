@@ -26,13 +26,10 @@ class NotesRegister extends React.Component{
             email:this.state.email,
             password:this.state.password
         }
-        console.log(formData)
         axios.post(`/user/register`,formData)
         .then(response=>{
             if(response.data.errors){
                 alert(response.data.message)
-            }else{
-                this.props.history.push('')
             }
         })
         .catch(err=> {

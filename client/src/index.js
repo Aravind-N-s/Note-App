@@ -8,8 +8,8 @@ import ShowNote from './components/Notes/Show'
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
 
-import CategoryList from './components/Category/list'
-import CategoryNew from './components/Category/new'
+import CategoryList from './components/Category/List'
+import CategoryNew from './components/Category/New'
 
 import NotesLogin from './components/User/Login'
 import NotesRegister from './components/User/Register';
@@ -73,16 +73,21 @@ class App extends React.Component {
                         { this.state.isAuthenticated && (
                             <div className ="container" >
                                 <div  className="container" >
-                                    <Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes"><h3>List Notes</h3></Link>
-                                    <Link style={{marginLeft:10}}className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link><br />
+                                    <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes"><h3> New Notes</h3></Link>} position = "right top" on="click">
+                                        <div>
+                                            <NoteNew />
+                                        </div>
+                                    </Popup>
+                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>
+                                    <NotesList/>                                    
                                 </div>
                                 <Route path="/logout" render = {(props) => {
                                     return <NotesLogout {...props} handleAuth={this.handleAuth} />
                                 }}/>
-                                <Route path="/notes" component={NotesList} exact={true}/>
-                                <Route path="/notes/new" component={NoteNew} />
+                                <Route path="/notes" exact={true}/>
+                                <Route path="/notes/new" component={NoteNew} exact={true}/>
                                 <Route path="/notes/edit/:id" component={NoteEdit} exact={true} />
-                                <Route path="/notes/:id" component={ShowNote} />
+                                <Route path="/notes/:id" component={ShowNote} exact={true}/>
                                 <Route path="/category" component={CategoryList} exact={true}/>
                                 <Route path="/category/new" component={CategoryNew} />  
                             </div>

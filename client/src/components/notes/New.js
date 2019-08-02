@@ -1,4 +1,4 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from '../../config/axios'
 import NotesForm from './Form'
 
@@ -8,9 +8,12 @@ class NotesNew extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit(formData){
-        axios.post('/notes', formData)
+        axios.post('/notes', formData,{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
             .then(response => {
-                console.log(response)
                 //change to another component - show
                 if(response.data.hasOwnProperty('errors')){
                     console.log(response.data.errors)

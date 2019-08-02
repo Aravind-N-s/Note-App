@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Tag = require('./Tag')
 
 //Schema - Object Constructor Function
 
@@ -40,11 +41,11 @@ NoteSchema.post('save', function(next){
     const note = this
     note.tags.forEach(function(tagItem){
         Tag.findById(tagItem.tag)
-            .then(tag => {
-                tag.notes.push({note:note._id})
-                tag.save()
-                next()
-            })
+        .then(tag => {
+            tag.notes.push({note:note._id})
+            tag.save()
+            next()                
+        })
     })
 })
 

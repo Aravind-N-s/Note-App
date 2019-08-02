@@ -1,6 +1,6 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from '../../config/axios'
-import {Link} from './node_modules/react-router-dom'
+import {Link} from 'react-router-dom'
 
 class NotesList extends React.Component {
     constructor(props){
@@ -11,7 +11,11 @@ class NotesList extends React.Component {
         
     }
     componentDidMount(){
-        axios.get('/notes')
+        axios.get('/notes',{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
         .then(response => {
             this.setState(() => ({
                 notes: response.data
@@ -28,7 +32,6 @@ class NotesList extends React.Component {
                         return <li key={note._id}><Link to={`/notes/${note._id}`}>{note.title}</Link></li>
                     })}
                 </ul>
-                <Link to={'/notes/new'} className = "btn btn-primary">New Note</Link>
             </div>
         )
     }

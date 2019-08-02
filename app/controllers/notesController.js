@@ -1,9 +1,9 @@
 const Note = require('../models/note')
-
 module.exports.list = (req,res) => {
     const {user} = req
-    Note.find({user:user._id}).populate('category').populate('tags.tag', ['name'])
-    .sort({createdAt: -1}).limit(2)
+    Note.find({
+        user:user._id
+    }).populate('category').sort({createdAt: -1})
     .then((notes) => {
         res.json(notes)
     })

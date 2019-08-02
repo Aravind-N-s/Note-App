@@ -1,4 +1,4 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from '../../config/axios'
 
 class NotesForm extends React.Component{
@@ -35,6 +35,7 @@ class NotesForm extends React.Component{
                 }
             })
         }
+        console.log(formData)
         this.props.handleSubmit(formData)
     }
     handleTagSelection(tag){
@@ -50,13 +51,13 @@ class NotesForm extends React.Component{
         }))
     }
     componentDidMount() {
-        axios.get('categories')
+        axios.get('/categories')
             .then((response) => {
                 this.setState(() => ({
                     categories: response.data
                 }))
             })
-        axios.get('tags')
+        axios.get('/tags')
         .then((response) => {
             this.setState(() => ({
                 tags: response.data
@@ -65,8 +66,9 @@ class NotesForm extends React.Component{
     }
 
     render() {
+        console.log(this.state.selectedTags)
         return (
-            <div style={{maxWidth:"500px"}}className="container form-group nav justify-content-center border border-primary">
+            <div style={{maxWidth:"500px"}}className="form-group nav justify-content-center bg bg-white">
                 <form style = {{marginTop:"10px",marginBottom:"10px"}}  onSubmit={this.handleSubmit}>
                         <label>
                             <select className = "form-control" value={this.state.category} name="category" onChange={this.handleChange}>
@@ -84,14 +86,14 @@ class NotesForm extends React.Component{
                         </label><br />
                         <label>
                             {this.state.tags.map(tag => {
-                                return <label className="checkbox-inline nav nav-pills" key = {tag._id}> 
+                                return <label key = {tag._id}> 
                                 <input type = 'checkbox' onClick={() => {
                                     this.handleTagSelection(tag)
-                                }}/> <h6>{tag.name}</h6>
+                                }}/> <h6>{'| '+tag.name+'| '}</h6>
                                 </label>
                             })}
                         </label><br />
-                        <input className="btn btn-outline-danger" type='submit' />
+                        <center><input className="btn btn-outline-danger" type='submit' /></center>
                 </form>
             </div>
         )
