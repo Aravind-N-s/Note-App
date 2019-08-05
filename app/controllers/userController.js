@@ -21,7 +21,6 @@ router.post('/register', (req,res) => {
 //localhost:3005/users/login
 router.post('/login', (req,res) =>{
     const body = req.body  
-    
     User.findByCredentials(body.email, body.password)
         .then(user => {
             return user.generateToken()

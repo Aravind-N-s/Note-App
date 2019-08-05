@@ -9,12 +9,14 @@ class CategoryForm extends React.Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
     handleChange(e){
         e.persist()
         this.setState(() => ({
             [e.target.name]: e.target.value
         }))
     }
+
     handleSubmit(e){
         e.preventDefault()
         const formData = {
@@ -22,7 +24,15 @@ class CategoryForm extends React.Component{
         }
         this.props.handleSubmit(formData)
     }
+
+    componentWillReceiveProps(nextProps){
+        this.setState(() => ({
+            name: nextProps.selectCategory.category.name
+        }))
+    }
+
     render(){
+        console.log(this.state)
         return(
             <div className = "container input-group input-group-lg border border-secondary">
                 <form onSubmit = {this.handleSubmit}>

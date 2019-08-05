@@ -74,30 +74,30 @@ class NotesForm extends React.Component{
         return (
             <div style={{maxWidth:"500px"}}className="form-group nav justify-content-center bg bg-white">
                 <form style = {{marginTop:"10px",marginBottom:"10px"}}  onSubmit={this.handleSubmit}>
-                        <label>
-                            <select className = "form-control" value={this.state.category} name="category" onChange={this.handleChange}>
-                                <option value="">Categories</option>
-                                {this.state.categories.map((category) => {
-                                    return <option key={category._id}value={category._id} >{category.name}</option>
-                                })}
-                            </select>                    
-                        </label><br/>
-                        <label >
-                            <input className="form-control form-control-lg" type="text" placeholder = "Title" value={this.state.title} onChange={this.handleChange} name="title" />
-                        </label><br/>
-                        <label>
-                        <textarea className="form-control" placeholder = "Body" value= {this.state.body} onChange = {this.handleChange} name="body"  rows="3"/>
-                        </label><br />
-                        <label>
-                            {this.state.tags.map(tag => {
-                                return <label key = {tag._id}> 
-                                <input type = 'checkbox' onClick={() => {
-                                    this.handleTagSelection(tag)
-                                }}/> <h6>{'| '+tag.name+'| '}</h6>
-                                </label>
+                    <label>
+                        <select className = "form-control" value={this.state.category} name="category" onChange={this.handleChange}>
+                            <option value="">Categories</option>
+                            {this.state.categories.map((category) => {
+                                return <option key={category._id}value={category._id} >{category.name}</option>
                             })}
-                        </label><br />
-                        <center><input className="btn btn-outline-danger" type='submit' /></center>
+                        </select>                    
+                    </label><br/>
+                    <label >
+                        <input className="form-control form-control-lg" type="text" placeholder = "Title" value={this.state.title} onChange={this.handleChange} name="title" />
+                    </label><br/>
+                    <label>
+                    <textarea className="form-control" placeholder = "Body" value= {this.state.body} onChange = {this.handleChange} name="body"  rows="3"/>
+                    </label><br />
+                    <label>
+                        {this.state.tags.map(tag => {
+                            return <label key = {tag._id}> 
+                            <input type = 'checkbox' onClick={() => {
+                                this.handleTagSelection(tag)
+                            }}/> <h6>{'| '+tag.name+'| '}</h6>
+                            </label>
+                        })}
+                    </label><br />
+                    <center><input className="btn btn-outline-danger" type='submit' /></center>
                 </form>
             </div>
         )

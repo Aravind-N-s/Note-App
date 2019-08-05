@@ -20,7 +20,7 @@ router.get('/',authenticateUser,(req,res) => {
 })
 router.get('/:id',authenticateUser, (req, res) => {
     const id = req.params.id
-    Promise.all([Category.findOneId({
+    Promise.all([Category.findOne({
         user:req.user._id,
         _id: id
     }),Note.find({
@@ -72,7 +72,8 @@ router.delete('/:id',authenticateUser,(req,res) => {
     const id = req.params.id
     Category.findOneAndDelete({
         user: req.user._id,
-        _id:id})
+        _id:id
+    })
     .then((categories) => {
         res.json(categories)
     })
