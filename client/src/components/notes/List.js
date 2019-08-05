@@ -26,7 +26,7 @@ class NotesList extends React.Component {
     render(){
         return (
             <div className = "container ">
-                <h2 className = " text -primary">Listing Notes <small className = "text-muted"> - {this.state.notes.length} </small> </h2>
+                <h2 className = "text-primary"> Notes </h2>
                 <ul>
                     {this.state.notes.map(note => {
                         return <li key={note._id}><Link to={`/notes/${note._id}`}>{note.title}</Link></li>

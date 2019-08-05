@@ -51,7 +51,11 @@ class NotesForm extends React.Component{
         }))
     }
     componentDidMount() {
-        axios.get('/categories')
+        axios.get('/categories',{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
             .then((response) => {
                 this.setState(() => ({
                     categories: response.data

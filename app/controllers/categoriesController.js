@@ -1,10 +1,16 @@
 const express = require('express')
-const Note = require('../models/note')
-const Category = require('../models/category')
 const router = express.Router()
 
-router.get('/',(req,res) => {
-    Category.find()
+const Note = require('../models/note')
+const Category = require('../models/category')
+const {authenticateUser} = require('../middlewares/authentication')
+
+
+router.get('/',authenticateUser,(req,res) => {
+    const {user} = req
+    Category.find({
+        user:user._id
+    })
     .then((categories) => {
         res.json(categories)
     })
@@ -12,9 +18,16 @@ router.get('/',(req,res) => {
         res.json(err)
     })
 })
-router.get('/:id', (req, res) => {
+router.get('/:id',authenticateUser, (req, res) => {
     const id = req.params.id
-    Promise.all([Category.findById(id),Note.find({category:id})])
+    Promise.all([Category.findOneId({
+        user:req.user._id,
+        _id: id
+    }),Note.find({
+        user:req.user._id,
+        _id: id,
+        category:id
+    })])
         .then(response => {
             res.json({
                 category:response[0],
@@ -25,9 +38,11 @@ router.get('/:id', (req, res) => {
             res.json(err)
         })
 })
-router.post('/',(req, res) => {
+router.post('/',authenticateUser,(req, res) => {
+    const {user} = req
     const body = req.body
     const category = new Category(body)
+    category.user = user._id
     category.save()
     .then((category) => {
         res.json(category)
@@ -36,20 +51,28 @@ router.post('/',(req, res) => {
         res.json(err)
     })
 })
-router.put('/:id',(req,res) => {
+router.put('/:id',authenticateUser,(req,res) => {
     const id = req.params.id
     const body = req.body
-    Category.findByIdAndUpdate(id, { $set: body }, {new: true})
-    .then((categories) => {
-        res.json(categories)
+    Category.findOneAndUpdate({
+        user: req.user._id,
+        _id: id
+    }, { $set: body }, {new: true, runValidators: true})
+    .then((category) => {
+        if(!category){
+            res.json({})
+        }
+        res.json(category)
     })
     .catch((err) => {
         res.json(err)
     })
 })
-router.delete('/:id',(req,res) => {
+router.delete('/:id',authenticateUser,(req,res) => {
     const id = req.params.id
-    Category.findByIdAndDelete(id)
+    Category.findOneAndDelete({
+        user: req.user._id,
+        _id:id})
     .then((categories) => {
         res.json(categories)
     })

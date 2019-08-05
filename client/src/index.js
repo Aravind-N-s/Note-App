@@ -10,6 +10,7 @@ import NoteEdit from './components/Notes/Edit'
 
 import CategoryList from './components/Category/List'
 import CategoryNew from './components/Category/New'
+import CategoryEdit from './components/Category/Edit'
 
 import NotesLogin from './components/User/Login'
 import NotesRegister from './components/User/Register';
@@ -90,6 +91,7 @@ class App extends React.Component {
                                 <Route path="/notes/:id" component={ShowNote} exact={true}/>
                                 <Route path="/category" component={CategoryList} exact={true}/>
                                 <Route path="/category/new" component={CategoryNew} />  
+                                <Route path="/category/edit/:id" component={CategoryEdit} exact={true} />
                             </div>
                         )}   
                         <Route render={() => {

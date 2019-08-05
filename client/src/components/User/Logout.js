@@ -12,12 +12,12 @@ class NotesLogout extends React.Component{
         .then(response=>{
             localStorage.removeItem('userAuthToken')
             this.props.handleAuth(false)
-            this.props.history.push('/login')
+            this.props.history.push('/')
         })
     }
     render(){
         return(
-            <div><p>logging out..</p></div>
+            <p>logging out..</p>
         )
     }
 }

@@ -8,7 +8,11 @@ class CategoryNew extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit(formData){
-        axios.post('/categories',formData)
+        axios.post('/categories',formData ,{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
         .then(response => {
             if(response.data.hasOwnProperty('errors')){
                 console.log(response.data.errors)
