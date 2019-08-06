@@ -13,9 +13,10 @@ import CategoryNew from './components/Category/New'
 import CategoryForm from './components/Category/Form'
 
 import NotesLogin from './components/User/Login'
-import NotesRegister from './components/User/Register';
-import NotesAccount from './components/User/Account';
+import NotesRegister from './components/User/Register'
+import NotesAccount from './components/User/Account'
 import NotesLogout from './components/User/Logout'
+
 class App extends React.Component {
     constructor(props){
         super(props)
