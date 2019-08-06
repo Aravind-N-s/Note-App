@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'lodash'
 
 class CategoryForm extends React.Component{
     constructor(props){
@@ -8,6 +9,22 @@ class CategoryForm extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount(props){
+        // {_.isEmpty(this.props.selectCategory.category) ? (
+        //     <> 
+        //         {this.setState(() => ({
+        //             name: ''
+        //         }))}         
+        //     </>
+        // ) : (
+        //     <>
+        //         {this.setState(() => ({
+        //             name: this.props.selectCategory.category.name
+        //         }))} 
+        //     </>
+        // ) }          
     }
 
     handleChange(e){
@@ -25,12 +42,6 @@ class CategoryForm extends React.Component{
         this.props.handleSubmit(formData)
     }
 
-    componentWillReceiveProps(nextProps){
-        this.setState(() => ({
-            name: nextProps.selectCategory.category.name
-        }))
-    }
-
     render(){
         console.log(this.state)
         return(
@@ -38,7 +49,7 @@ class CategoryForm extends React.Component{
                 <form onSubmit = {this.handleSubmit}>
                     <label>
                         <span className="input-group-text">Category Name</span>
-                        <input type="text" name='name' onChange={this.handleChange}/>
+                        <input type="text" name='name' onChange={this.handleChange} value={this.state.name} />
                     </label><br />
                     <input className ="btn btn-dark"  type = "submit" />
                 </form>

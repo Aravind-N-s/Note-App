@@ -73,6 +73,7 @@ class CategoryList extends React.Component{
             })
     }
     render(){
+        console.log(this.state.selectCategory.category)
         return(
             <div className = "container">   
                 {_.isEmpty(this.state.selectCategory) ? (
@@ -80,7 +81,7 @@ class CategoryList extends React.Component{
                     <ul style={{textTransform: "capitalize"}} className = "list-group">
                         {this.state.category.map(categories => {
                             return <li className = "list-group-item col-sm-4" key={categories._id}>{categories.name}
-                                <button className="btn btn-primary" onClick = {() => this.handleEdit(categories._id)}>+</button>
+                                <Link className="btn btn-primary" to={`/category/edit/${categories._id}`}>+</Link>
                                 <button className="btn btn-danger"onClick = {() => this.handleRemove(categories._id)}>X</button>
                         </li>
                     })}

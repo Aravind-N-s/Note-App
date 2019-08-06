@@ -29,7 +29,7 @@ class NotesList extends React.Component {
                 <h2 className = "text-primary"> Notes </h2>
                 <ul>
                     {this.state.notes.map(note => {
-                        return <li key={note._id}><Link to={`/notes/${note._id}`}>{note.title}</Link></li>
+                        return <li key={note._id}><Link to={`/notes/${note._id}`}>{<h3>{note.title}</h3>}</Link></li>
                     })}
                 </ul>
             </div>

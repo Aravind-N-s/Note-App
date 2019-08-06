@@ -64,15 +64,19 @@ class ShowNote extends React.Component{
                 <p>{this.state.note.category && this.state.note.category.name}</p>
                 <h5 className="list-group-item">tags: </h5>
                     {this.state.note.tags && (
-                        <ul className="list-group-item">
+                        <ol className="list-group-item">
                             {this.state.note.tags.map((tagItem=>{
                                 return <li className="list-inline-item" key={tagItem._id}>{tagItem.tag}<button onClick={()=>{this.handleRemoveTag(tagItem)}}>x</button></li>
                             }))}
-                        </ul>
+                        </ol>
                     )}
-                <Link className="btn btn-danger" to="/notes">Back</Link>
-                <Link className="btn btn-primary"to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
-                <button className="btn btn-danger"onClick = {this.handleRemove}>Delete</button>
+                    {this.props.location.pathname !== "/notes/new" && (
+                        <>
+                            <Link className="btn btn-danger" to="/notes">Back</Link>
+                            <Link className="btn btn-primary"to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
+                            <button className="btn btn-danger"onClick = {this.handleRemove}>Delete</button>
+                        </>
+                    )}
             </div>
         )        
     }
