@@ -12,19 +12,14 @@ class CategoryForm extends React.Component{
     }
 
     componentDidMount(props){
-        // {_.isEmpty(this.props.selectCategory.category) ? (
-        //     <> 
-        //         {this.setState(() => ({
-        //             name: ''
-        //         }))}         
-        //     </>
-        // ) : (
-        //     <>
-        //         {this.setState(() => ({
-        //             name: this.props.selectCategory.category.name
-        //         }))} 
-        //     </>
-        // ) }          
+        console.log(props, 'selectCategory')
+        !_.isEmpty(this.props.selectCategory) ? (
+            this.setState(() => ({
+                name: this.props.selectCategory
+            }))          
+        ) : (
+            console.log(this.state)
+        )        
     }
 
     handleChange(e){
@@ -43,7 +38,6 @@ class CategoryForm extends React.Component{
     }
 
     render(){
-        console.log(this.state)
         return(
             <div className = "container input-group input-group-lg border border-secondary">
                 <form onSubmit = {this.handleSubmit}>

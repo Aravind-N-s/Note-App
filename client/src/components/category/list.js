@@ -32,6 +32,7 @@ class CategoryList extends React.Component{
     }
 
     handleEdit(e){
+        console.log(e)
         const id = e
         axios.get(`/categories/${id}`,{
             headers:{

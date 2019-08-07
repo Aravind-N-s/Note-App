@@ -69,7 +69,7 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <div>
-                    <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 bg-warning rounded" >
+                    <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
                         <Link className ="text-dark" to="/" >My Notes App</Link>{this.handleShowAuth()}</h1>
                     <Switch>
                         { this.state.isAuthenticated && (
@@ -87,14 +87,14 @@ class App extends React.Component {
                                     <Route path="/logout" render = {(props) => {
                                         return <NotesLogout {...props} handleAuth={this.handleAuth} />
                                     }}/>
-                                    <Route path="/notes/new" exact={true}/>
+                                    {/* <Route path="/notes/new" exact={true}/> */}
                                     <Route path="/notes" exact={true}/>
                                     <Route path="/notes/edit/:id" exact component={NoteEdit}  />
-                                    <Route path="/notes/:id" component={ShowNote} exact={true}/>
+                                    <Route path="/notes/:id" component={ShowNote}/>
                                     <Route path="/category" component={CategoryList} exact={true}/>
                                     <Route path="/category/new" component={CategoryNew} />  
                                     <Route path="/category/edit/:id" render = {(props) => {
-                                        return <CategoryForm {...props}/>
+                                        return <CategoryForm {...props} selectedCategory={'hello'}/>
                                     }} exact={true}/>
                                 </>
                             </div>

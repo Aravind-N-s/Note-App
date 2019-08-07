@@ -8,24 +8,20 @@ class NotesNew extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit(formData){
-        console.log(formData)
         axios.post('/notes', formData,{
             headers:{
                 'x-auth':localStorage.getItem('userAuthToken')
             }
         })
         .then(response => {
-            console.log(response)
+            console.log(this.props)
+            // console.log(response.data._id, 'handleSubmit')
             // change to another component - show
-            if(response.data.hasOwnProperty('errors')){
-                console.log(response.data.errors)
-            }
-            else {
-                this.props.history.push(`/notes`) //${response.data._id}
-            }
+            // this.props.history.push(`/notes/${response.data._id}`)
+            
         })
         .catch((err) => {
-            console.log(err, "errors")
+            alert(err, "errors")
         })
     }
     render(){
