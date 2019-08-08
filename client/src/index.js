@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import Popup from 'reactjs-popup'
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
 
-import NotesList from './components/Notes/List'
 import ShowNote from './components/Notes/Show'
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
+import NotesList from './components/Notes/List'
 
 import CategoryList from './components/Category/List'
 import CategoryNew from './components/Category/New'
