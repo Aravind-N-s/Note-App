@@ -11,10 +11,10 @@ const tagsRouter = require('./app/controllers/TagsController')
 //for heroku 
 const path = require("path")
 const port = process.env.port || 3001
-app.use(express.static(path.join(_dirname + "/client/build/index")))
+app.use(express.static(path.join(__dirname + "/client/build/index")))
 
 app.get("*", (req,res) =>{
-    res.sendFile(path.join(_dirname + "/client/build/index.html"))
+    res.sendFile(path.join(__dirname + "/client/build/index.html"))
 })
 
 
