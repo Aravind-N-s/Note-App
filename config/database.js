@@ -7,7 +7,10 @@ mongoose.Promise = global.Promise
 mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 
-const CONNECTION_URI = process.env.MONGODB_URI || "mongodb+srv://notes-app_admin:<password>@notesapp-unuia.mongodb.net/test?retryWrites=true&w=majority"
+const connection_uri = "mongodb+srv://notes-app_admin:<password>@notesapp-unuia.mongodb.net/test?retryWrites=true&w=majority"
+// const connection_uri = 'mongodb://localhost:27017/my-notes'
+
+// const CONNECTION_URI = process.env.MONGODB_URI || 
 
 //connect to db
 mongoose.connect(connection_uri, { useNewUrlParser: true })
