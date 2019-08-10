@@ -103,7 +103,7 @@ class App extends React.Component {
                                     <Route path="/logout" render = {(props) => {
                                         return <NotesLogout {...props} handleAuth={this.handleAuth} />
                                     }}/>
-                                    {/* <Route path="/notes/new" exact={true}/> */}
+                                    <Route path="/notes/new" exact={true} strict={true}/>
                                     <Route path="/notes" exact={true}/>
                                     <Route path="/notes/edit/:id" exact component={NoteEdit}  />
                                     <Route path="/notes/:id" exact strict render = {(props) => {
