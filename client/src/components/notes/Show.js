@@ -12,18 +12,18 @@ class ShowNote extends React.Component{
         this.handleRemoveTag=this.handleRemoveTag.bind(this)
     }
 
-    componentWillMount(){
+    componentDidUpdate(props){
         const id = this.props.match.params.id
         axios.get(`/notes/${id}`,{
             headers:{
                 'x-auth':localStorage.getItem('userAuthToken')
             }
         })
-            .then(response => {
-                this.setState(() => ({
-                    note: response.data
-                }))
-            })
+        .then(response => {
+            this.setState(() => ({
+                note: response.data
+            }))
+        })
     }
 
     handleRemoveTag(tag){
@@ -57,28 +57,28 @@ class ShowNote extends React.Component{
         }
     }
     render(){
-        console.log(this.state)
         return(
             <div className="container col-md-6">            
                 <h2>{this.state.note.title}</h2>
                 <p>{this.state.note.body}</p>
                 <p>{this.state.note.category && this.state.note.category.name}</p>
-                <h5 className="list-group-item">tags: 
-                    {this.state.note.tags && (
-                    <ol>
-                        {this.state.note.tags.map((tagItem=>{
-                            return <li key={tagItem._id}>{tagItem.tag.name}<button onClick={()=>{this.handleRemoveTag(tagItem)}}>x</button></li>
-                        }))}
-                    </ol>
-                    )}
-                </h5>
-                    {this.props.location.pathname !== "/notes/new" && (
-                        <>
-                            <Link className="btn btn-danger" to="/notes">Back</Link>
-                            <Link className="btn btn-primary"to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
-                            <button className="btn btn-danger"onClick = {this.handleRemove}>Delete</button>
-                        </>
-                    )}
+                
+                {this.props.location.pathname !== "/notes/new" && (
+                    <>
+                        <h5 className="list-group-item">tags: 
+                            {this.state.note.tags && (
+                            <ol>
+                                {this.state.note.tags.map((tagItem=>{
+                                    return <li key={tagItem._id}>{tagItem.tag.name}<button onClick={()=>{this.handleRemoveTag(tagItem)}}>x</button></li>
+                                }))}
+                            </ol>
+                            )}
+                        </h5>
+                        <Link className="btn btn-danger" to="/notes">Back</Link>
+                        <Link className="btn btn-primary"to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
+                        <button className="btn btn-danger"onClick = {this.handleRemove}>Delete</button>
+                    </>
+                )}
             </div>
         )        
     }

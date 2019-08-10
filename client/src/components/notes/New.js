@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 import axios from '../../config/axios'
 import NotesForm from './Form'
 
@@ -14,10 +15,15 @@ class NotesNew extends React.Component{
             }
         })
         .then(response => {
-            console.log(this.props)
-            // console.log(response.data._id, 'handleSubmit')
-            // change to another component - show
-            // this.props.history.push(`/notes/${response.data._id}`)
+            if(response.data.hasOwnProperty('errors')) {
+				console.log(response.data.errors)
+				this.setState(() => ({
+					serverErrors: response.data.errors
+				}))
+			} else {
+				console.log(response.data)
+				this.props.history.push(`/notes/${response.data._id}`)
+			}
             
         })
         .catch((err) => {

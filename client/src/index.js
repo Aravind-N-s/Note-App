@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from './config/axios'
 import Popup from 'reactjs-popup'
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
 
 import ShowNote from './components/Notes/Show'
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
-import NotesList from './components/Notes/List'
 
 import CategoryList from './components/Category/List'
 import CategoryNew from './components/Category/New'
@@ -21,7 +21,8 @@ class App extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            isAuthenticated: false
+            isAuthenticated: false,
+            notes: []
         }
         this.handleAuth=this.handleAuth.bind(this)
         this.handleShowAuth=this.handleShowAuth.bind(this)
@@ -31,7 +32,7 @@ class App extends React.Component {
         this.setState({isAuthenticated:bool})
     }
 
-    handleShowAuth = (props) =>{
+    handleShowAuth = () =>{
         return(
             <div>
                 { this.state.isAuthenticated && (
@@ -63,6 +64,17 @@ class App extends React.Component {
         if(localStorage.getItem('userAuthToken')){
             this.setState({isAuthenticated: true})
         }
+        axios.get('/notes',{
+            headers:{
+                'x-auth':localStorage.getItem('userAuthToken')
+            }
+        })
+        .then(response => {
+            console.log(response)
+            this.setState(() => ({
+                notes: response.data
+            }))
+        })
     }
 
     render() {
@@ -80,8 +92,12 @@ class App extends React.Component {
                                             <NoteNew />
                                         </div>
                                     </Popup>
-                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>
-                                    <NotesList/>                                   
+                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>                                  
+                                    <ul>
+                                        {this.state.notes.map(note => {
+                                            return <li key={note._id}><Link to={`/notes/${note._id}`}>{<h3>{note.title}</h3>}</Link></li>
+                                        })}
+                                    </ul> 
                                 </div>
                                 <>
                                     <Route path="/logout" render = {(props) => {
@@ -90,7 +106,9 @@ class App extends React.Component {
                                     {/* <Route path="/notes/new" exact={true}/> */}
                                     <Route path="/notes" exact={true}/>
                                     <Route path="/notes/edit/:id" exact component={NoteEdit}  />
-                                    <Route path="/notes/:id" component={ShowNote}/>
+                                    <Route path="/notes/:id" exact strict render = {(props) => {
+                                        return <ShowNote {...props} handleAuth={this.handleAuth} />
+                                    }} exact={true}/>
                                     <Route path="/category" component={CategoryList} exact={true}/>
                                     <Route path="/category/new" component={CategoryNew} />  
                                     <Route path="/category/edit/:id" render = {(props) => {
@@ -98,10 +116,7 @@ class App extends React.Component {
                                     }} exact={true}/>
                                 </>
                             </div>
-                        )}   
-                        <Route render={() => {
-                            return <h2>path not exist</h2>
-                        }} exact={true}/>                                           
+                        )}                                             
                     </Switch>
                 </div>
             </BrowserRouter>

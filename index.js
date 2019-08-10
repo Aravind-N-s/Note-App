@@ -11,7 +11,7 @@ const categoriesRouter = require('./app/controllers/categoriesController')
 
 //for heroku 
 const path = require("path")
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3005
 
 app.use(express.json())
 app.use(cors())
