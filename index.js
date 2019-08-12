@@ -5,7 +5,7 @@ const app = express()
 //1st approach
 const router = require('./config/routes')
 //2nd approach
-const tagsRouter = require('./app/controllers/TagsController')
+const tagsRouter = require('./app/controllers/tagsController')
 const { usersRouter } = require('./app/controllers/userController') 
 const categoriesRouter = require('./app/controllers/categoriesController')
 
