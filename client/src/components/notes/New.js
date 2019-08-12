@@ -1,7 +1,7 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
 import axios from '../../config/axios'
 import NotesForm from './Form'
+import {Redirect} from 'react-router-dom'
 
 class NotesNew extends React.Component{
     constructor(props){
@@ -20,11 +20,8 @@ class NotesNew extends React.Component{
 				this.setState(() => ({
 					serverErrors: response.data.errors
 				}))
-			} else {
-				console.log(response.data)
-				this.props.history.push(`/notes/${response.data._id}`)
-			}
-            
+            }
+            return <Redirect exact strict to="/notes" />            
         })
         .catch((err) => {
             alert(err, "errors")

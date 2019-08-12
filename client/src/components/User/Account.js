@@ -67,7 +67,7 @@ class NotesAccount extends React.Component{
                         <p className="container text-dark text-weight-bold">Tags<small className = "text-muted text-weight-bold"> - {this.state.tags.length} </small></p>
                     </h4>
                     
-               <Link className="btn btn-success" to="logout">Logout</Link> 
+               <Link className="btn btn-success" to="/users/logout">Logout</Link> 
             </div>
         )
     }

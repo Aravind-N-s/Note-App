@@ -59,10 +59,9 @@ class ShowNote extends React.Component{
     render(){
         return(
             <div className="container col-md-6">            
-                <h2>{this.state.note.title}</h2>
-                <p>{this.state.note.body}</p>
+                <h2>{this.state.note && this.state.note.title}</h2>
+                <p>{this.state.note && this.state.note.body}</p>
                 <p>{this.state.note.category && this.state.note.category.name}</p>
-                
                 {this.props.location.pathname !== "/notes/new" && (
                     <>
                         <h5 className="list-group-item">tags: 

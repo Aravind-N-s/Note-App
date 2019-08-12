@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from './config/axios'
 import Popup from 'reactjs-popup'
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
+import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
 
-import ShowNote from './components/Notes/Show'
+import ShowNote from '../src/components/Notes/Show'
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
+import NotesList from './components/Notes/List'
 
 import CategoryList from './components/Category/List'
 import CategoryNew from './components/Category/New'
@@ -37,19 +37,19 @@ class App extends React.Component {
             <div>
                 { this.state.isAuthenticated && (
                     <div className ="container">
-                        <Popup trigger={<Link className="btn btn-success" to="/account">Account</Link>}position="left top"on="hover">
+                        <Popup trigger={<Link className="btn btn-success" to="/users/account">Account</Link>}position="left top"on="hover">
                            <NotesAccount />                          
                         </Popup>
                     </div>
                 )}
                 { !this.state.isAuthenticated && (
                     <div className ="container">
-                        <Popup trigger={<Link className="btn btn-success" to="/login">Login</Link>} position="left top"on="hover">
+                        <Popup trigger={<Link className="btn btn-success" to='/users/login'>Login</Link>} position="left top"on="hover">
                             <div>
                                 <NotesLogin handleAuth={this.handleAuth}/>
                             </div>
                         </Popup><br />
-                        <Popup trigger={<Link className="btn btn-success" to="/register">Register</Link>} position="left top"on="hover">
+                        <Popup trigger={<Link className="btn btn-success" to="/users/register">Register</Link>} position="left top"on="hover">
                             <div>
                                 <NotesRegister />
                             </div>
@@ -64,17 +64,6 @@ class App extends React.Component {
         if(localStorage.getItem('userAuthToken')){
             this.setState({isAuthenticated: true})
         }
-        axios.get('/notes',{
-            headers:{
-                'x-auth':localStorage.getItem('userAuthToken')
-            }
-        })
-        .then(response => {
-            console.log(response)
-            this.setState(() => ({
-                notes: response.data
-            }))
-        })
     }
 
     render() {
@@ -82,42 +71,50 @@ class App extends React.Component {
             <BrowserRouter>
                 <div>
                     <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
-                        <Link className ="text-dark" to="/" >My Notes App</Link>{this.handleShowAuth()}</h1>
-                    <Switch>
+                        <Link className ="text-dark" to="/notes" >My Notes App</Link>{this.handleShowAuth()}</h1>
                         { this.state.isAuthenticated && (
                             <div className ="container" >
-                                <div  className="container" >
                                     <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
                                         <div>
                                             <NoteNew />
                                         </div>
                                     </Popup>
-                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>                                  
-                                    <ul>
-                                        {this.state.notes.map(note => {
-                                            return <li key={note._id}><Link to={`/notes/${note._id}`}>{<h3>{note.title}</h3>}</Link></li>
-                                        })}
-                                    </ul> 
-                                </div>
+                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>                           
+                                <Switch>
                                 <>
-                                    <Route path="/logout" render = {(props) => {
-                                        return <NotesLogout {...props} handleAuth={this.handleAuth} />
+                                    <Route path="/users/logout" render = {(props) => {
+                                        return <>
+                                            <NotesLogout {...props} handleAuth={this.handleAuth} />
+                                            <Redirect to="/"/>
+                                            </>
                                     }}/>
-                                    <Route path="/notes/new" exact={true} strict={true}/>
-                                    <Route path="/notes" exact={true}/>
-                                    <Route path="/notes/edit/:id" exact component={NoteEdit}  />
+                                    <Route exact path="/notes" component={NotesList}/>
+                                    <Route exact strict path="/users/login" render={() => (<Redirect to="/notes"/>)} />
+                                    <Route exact strict path="/users/register" render={() => (<Redirect to="/notes"/>)} />
+                                    <Route exact strict path="/users/account" render={() => (<Redirect to="/notes"/>)} />
+                                    <Route exact strict path="/notes/new"/>
+                                    <Route path="/notes/edit/:id" exact component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  />
                                     <Route path="/notes/:id" exact strict render = {(props) => {
                                         return <ShowNote {...props} handleAuth={this.handleAuth} />
-                                    }} exact={true}/>
+                                    }}/>
                                     <Route path="/category" component={CategoryList} exact={true}/>
                                     <Route path="/category/new" component={CategoryNew} />  
                                     <Route path="/category/edit/:id" render = {(props) => {
                                         return <CategoryForm {...props} selectedCategory={'hello'}/>
                                     }} exact={true}/>
                                 </>
+                                </Switch>
                             </div>
+                        )}
+                        {!this.state.isAuthenticated &&(
+                            <Switch>
+                                <>
+                                    <Route exact path="/users/login" render={() => (<Redirect to="/" />)} />
+                                    <Route exact path="/users/register" render={() => (<Redirect to="/" />)} />
+                                    {/* <Route exact path="/" render={() => (<Redirect to="/error" />)} /> */}
+                                </>
+                            </Switch>
                         )}                                             
-                    </Switch>
                 </div>
             </BrowserRouter>
         )

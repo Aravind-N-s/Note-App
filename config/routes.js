@@ -1,8 +1,7 @@
 const express = require ('express')
-
+const router=express.Router()
 const notesController = require('../app/controllers/notesController')
 const {authenticateUser} = require('../app/middlewares/authentication')
-const router = require('./config/routes')
 
 router.get('/notes',authenticateUser, notesController.list)
 router.get('/notes/:id',authenticateUser, notesController.show)
