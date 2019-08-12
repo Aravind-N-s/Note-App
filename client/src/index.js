@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom'
 import Popup from 'reactjs-popup'
 import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
 
+import NotesLogin from './components/User/Login'
+import NotesRegister from './components/User/Register'
+import NotesAccount from './components/User/Account'
+import NotesLogout from './components/User/Logout'
+
 import ShowNote from '../src/components/Notes/Show'
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
@@ -11,11 +16,6 @@ import NotesList from './components/Notes/List'
 import CategoryList from './components/Category/List'
 import CategoryNew from './components/Category/New'
 import CategoryForm from './components/Category/Form'
-
-import NotesLogin from './components/User/Login'
-import NotesRegister from './components/User/Register'
-import NotesAccount from './components/User/Account'
-import NotesLogout from './components/User/Logout'
 
 class App extends React.Component {
     constructor(props){
