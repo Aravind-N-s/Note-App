@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Popup from 'reactjs-popup'
-// import {BrowserRouter, Route, Link, Switch, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import NotesLogin from './components/User/Login'
 import NotesRegister from './components/User/Register'
