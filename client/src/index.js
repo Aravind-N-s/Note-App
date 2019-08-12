@@ -68,7 +68,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >Notes-App</h1>
+            <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >Notes-App {this.handleShowAuth()}</h1>
             // <BrowserRouter>
             //     <div>
             //         <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
