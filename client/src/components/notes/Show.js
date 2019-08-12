@@ -12,7 +12,7 @@ class ShowNote extends React.Component{
         this.handleRemoveTag=this.handleRemoveTag.bind(this)
     }
 
-    componentDidUpdate(props){
+    componentDidMount(props){
         const id = this.props.match.params.id
         axios.get(`/notes/${id}`,{
             headers:{
