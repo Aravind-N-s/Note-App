@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const Note = require('../models/note')
-const Category = require('../models/category')
+const Note = require('../models/Note')
+const Category = require('../models/Category')
 const {authenticateUser} = require('../middlewares/authentication')
 
 

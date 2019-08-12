@@ -1,4 +1,4 @@
-const Note = require('../models/note')
+const Note = require('../models/Note')
 module.exports.list = (req,res) => {
     const {user} = req
     Note.find({
