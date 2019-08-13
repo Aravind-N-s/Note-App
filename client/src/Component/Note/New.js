@@ -1,7 +1,7 @@
-import React from './node_modules/react'
+import React from 'react'
 import axios from '../../Config/axios'
 import NotesForm from './Form'
-import {Redirect} from './node_modules/react-router-dom'
+import {Redirect} from 'react-router-dom'
 
 class NotesNew extends React.Component{
     constructor(props){

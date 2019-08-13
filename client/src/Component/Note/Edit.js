@@ -1,4 +1,4 @@
-import React from './node_modules/react'
+import React from 'react'
 import NoteForm from './Form'
 import axios from '../../Config/axios';
 

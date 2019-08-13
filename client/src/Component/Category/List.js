@@ -1,7 +1,7 @@
-import React from './node_modules/react'
-import _ from './node_modules/lodash'
+import React from 'react'
+import _ from 'lodash'
 import axios from '../../Config/axios'
-import {Link} from './node_modules/react-router-dom'
+import {Link} from 'react-router-dom'
 // import CategoryForm from './Form
 
 class CategoryList extends React.Component{
