@@ -90,7 +90,8 @@ class App extends React.Component {
                                         <NoteNew />                                            
                                     </div>
                                 </Popup> */}
-                                <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>
+                                <Hello />
+                                {/* <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4" to ="/category"><h3>List Category</h3></Link> */}
                                 <Switch>
                                 <>
                                     <Route exact strict path="/users/account"/>
@@ -106,7 +107,7 @@ class App extends React.Component {
                                         return <ShowNote {...props} handleAuth={this.handleAuth} />
                                     }}/> */}
                                     {/* <Route path="/notes/edit/:id" exact strict component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  /> */}
-                                    <Route path="/category" exact strict component={Hello}/>
+                                    {/* <Route path="/category" exact strict component={Hello}/> */}
                                     {/* <Route path="/category/new" exact strict component={CategoryNew} />   */}
                                     {/* <Route path="/category/edit/:id" exact strict component={CategoryForm}/> */}
                                 </>
