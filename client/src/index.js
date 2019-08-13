@@ -13,8 +13,8 @@ import NotesLogout from './components/User/Logout'
 // import ShowNote from './components/Notes/Show'
 // import NotesList from './components/Notes/List'
 
-import Hello from './components/category/hello'
-import Test from './components/category/hello'
+import Hello from './hello.js'
+import Test from './test'
 // import CategoryList from './components/Category/List'
 // import CategoryNew from './components/Category/New'
 // import CategoryForm from './components/Category/Form'
@@ -40,7 +40,8 @@ class App extends React.Component {
                 { this.state.isAuthenticated && (
                     <div className ="container">
                         <Popup trigger={<Link className="btn btn-success" to="/users/account">Account</Link>}position="left top"on="click">
-                           <NotesAccount />                          
+                           <NotesAccount />  
+                           <Hello />                        
                         </Popup>
                     </div>
                 )}
