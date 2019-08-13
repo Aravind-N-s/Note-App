@@ -8,14 +8,15 @@ import NotesRegister from './components/User/Register'
 import NotesAccount from './components/User/Account'
 import NotesLogout from './components/User/Logout'
 
-import CategoryList from './components/Category/List'
-import CategoryNew from './components/Category/New'
-import CategoryForm from './components/Category/Form'
-
 import NoteNew from  './components/Notes/New'
 import NoteEdit from './components/Notes/Edit'
 import ShowNote from './components/Notes/Show'
 import NotesList from './components/Notes/List'
+
+import CategoryList from './components/Category/List'
+import CategoryNew from './components/Category/New'
+import CategoryForm from './components/Category/Form'
+
 
 class App extends React.Component {
     constructor(props){
