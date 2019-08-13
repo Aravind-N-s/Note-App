@@ -11,13 +11,13 @@ class CategoryForm extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(props){
-        !_.isEmpty(this.props.selectCategory) && (
-            this.setState(() => ({
-                name: this.props.selectCategory
-            }))          
-        )
-    }
+    // componentDidMount(props){
+    //     !_.isEmpty(this.props.selectCategory) && (
+    //         this.setState(() => ({
+    //             name: this.props.selectCategory
+    //         }))          
+    //     )
+    // }
 
     handleChange(e){
         e.persist()
