@@ -12,10 +12,10 @@ import NotesLogout from './Component/User/Logout'
 // import CategoryNew from './Component/Category/New'
 // import CategoryForm from './Component/Category/Form'
 
-// import NoteNew from  './Component/Notes/New'
-// import NoteEdit from './Component/Notes/Edit'
-// import ShowNote from './Component/Notes/Show'
-// import NotesList from './Component/Notes/List'
+// import NoteNew from  './Component/Note/New'
+// import NoteEdit from './Component/Note/Edit'
+// import ShowNote from './Component/Note/Show'
+import NotesList from './Component/Note/List'
 
 class App extends React.Component {
     constructor(props){
@@ -97,8 +97,8 @@ class App extends React.Component {
                                         <Redirect to="/"/>                     
                                         </>
                                 }}/>
-                                {/* <Route exact strict path="/" component={NotesList}/>
-                                <Route exact strict path="/new"/>
+                                <Route exact strict path="/" component={NotesList}/>
+                                {/* <Route exact strict path="/new"/>
                                 <Route path="/notes/show/:id" exact strict render = {(props) => {
                                     return <ShowNote {...props} handleAuth={this.handleAuth} />
                                 }}/>

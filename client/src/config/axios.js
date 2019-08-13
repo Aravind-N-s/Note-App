@@ -1,4 +1,4 @@
-import Axios from './node_modules/axios'
+import Axios from 'axios'
  
 const axios = Axios.create({
     baseURL: '/'
