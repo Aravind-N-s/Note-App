@@ -8,9 +8,9 @@ import NotesRegister from './Components/User/Register'
 import NotesAccount from './Components/User/Account'
 import NotesLogout from './Components/User/Logout'
 
-import CategoryList from './Components/Category/List'
-import CategoryNew from './Components/Category/New'
-import CategoryForm from './Components/Category/Form'
+import CategoryList from '/Components/Category/List'
+import CategoryNew from '/Components/Category/New'
+import CategoryForm from '/Components/Category/Form'
 
 import NoteNew from  './Components/Notes/New'
 import NoteEdit from './Components/Notes/Edit'
