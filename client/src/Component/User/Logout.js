@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from '../../Config/axios';
+import axios from '../../config/axios';
 
 class NotesLogout extends React.Component{
     
