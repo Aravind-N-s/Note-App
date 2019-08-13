@@ -91,7 +91,6 @@ class App extends React.Component {
                                         <NoteNew />                                            
                                     </div>
                                 </Popup> */}
-                                <Hello />
                                 {/* <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4" to ="/category"><h3>List Category</h3></Link> */}
                                 <Switch>
                                 <>
