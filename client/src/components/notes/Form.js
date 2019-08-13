@@ -1,6 +1,6 @@
-import React from 'react'
-import Select from 'react-select'
-import axios from '../../config/axios'
+import React from './node_modules/react'
+import Select from './node_modules/react-select'
+import axios from '../../Config/axios'
 
 class NotesForm extends React.Component{
     constructor(props){

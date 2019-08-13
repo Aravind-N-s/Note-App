@@ -1,6 +1,6 @@
-import React from 'react'
+import React from './node_modules/react'
 import CategoryForm from './Form'
-import axios from '../../config/axios';
+import axios from '../../Config/axios';
 
 class CategoryNew extends React.Component{
     constructor(props){

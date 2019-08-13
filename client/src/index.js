@@ -1,28 +1,27 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Popup from 'reactjs-popup'
+import ReactDOM from 'react-dom'
 import {BrowserRouter, Switch, Link, Route, Redirect} from 'react-router-dom'
 
-import NotesLogin from './components/User/Login'
-import NotesRegister from './components/User/Register'
-import NotesAccount from './components/User/Account'
-import NotesLogout from './components/User/Logout'
+import NotesLogin from './Components/User/Login'
+import NotesRegister from './Components/User/Register'
+import NotesAccount from './Components/User/Account'
+import NotesLogout from './Components/User/Logout'
 
-import CategoryList from './components/Category/List'
-import CategoryNew from './components/Category/New'
-import CategoryForm from './components/Category/Form'
+// import CategoryList from './Components/Category/List'
+// import CategoryNew from './Components/Category/New'
+// import CategoryForm from './Components/Category/Form'
 
-import NoteNew from  './components/Notes/New'
-import NoteEdit from './components/Notes/Edit'
-import ShowNote from './components/Notes/Show'
-import NotesList from './components/Notes/List'
+// import NoteNew from  './Components/Notes/New'
+// import NoteEdit from './Components/Notes/Edit'
+// import ShowNote from './Components/Notes/Show'
+import NotesList from './Components/Notes/List.js'
 
 class App extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            isAuthenticated: false,
-            notes: []
+            isAuthenticated: false
         }
         this.handleAuth=this.handleAuth.bind(this)
         this.handleShowAuth=this.handleShowAuth.bind(this)
@@ -83,12 +82,12 @@ class App extends React.Component {
                     )}  
                     { this.state.isAuthenticated && (
                         <div className ="container" >
-                                <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
+                                {/* <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
                                     <div>
                                         <NoteNew />                                            
                                     </div>
                                 </Popup>
-                                <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>
+                                <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link> */}
                             <Switch>
                             <>
                                 <Route exact strict path="/users/account"/>
@@ -99,14 +98,14 @@ class App extends React.Component {
                                         </>
                                 }}/>
                                 <Route exact strict path="/" component={NotesList}/>
-                                <Route exact strict path="/new"/>
+                                {/* <Route exact strict path="/new"/>
                                 <Route path="/notes/show/:id" exact strict render = {(props) => {
                                     return <ShowNote {...props} handleAuth={this.handleAuth} />
                                 }}/>
                                 <Route path="/notes/edit/:id" exact strict component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  />
                                 <Route path="/category" exact strict component={CategoryList}/>
                                 <Route path="/category/new" exact strict component={CategoryNew} />  
-                                <Route path="/category/edit/:id" exact strict component={CategoryForm}/>
+                                <Route path="/category/edit/:id" exact strict component={CategoryForm}/> */}
                             </>
                             </Switch>
                         </div>

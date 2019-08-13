@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './node_modules/react'
 // import _ from 'lodash'
 
 class CategoryForm extends React.Component{
