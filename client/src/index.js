@@ -11,7 +11,7 @@ import NotesLogout from './components/User/Logout'
 // import NoteNew from  './components/Notes/New'
 // import NoteEdit from './components/Notes/Edit'
 // import ShowNote from './components/Notes/Show'
-// import NotesList from './components/Notes/List'
+import NotesList from './components/Notes/List'
 
 // import CategoryList from './components/Category/List'
 // import CategoryNew from './components/Category/New'
@@ -84,12 +84,12 @@ class App extends React.Component {
                         )}    
                         {this.state.isAuthenticated && (
                             <div className ="container" >
-                                    {/* <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
+                                    <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
                                         <div>
                                             <NoteNew />                                            
                                         </div>
                                     </Popup>
-                                    <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link> */}
+                                    {/* <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link> */}
                                 <Switch>
                                 <>
                                     <Route exact strict path="/users/account"/>
@@ -99,8 +99,8 @@ class App extends React.Component {
                                             <Redirect to="/"/>                     
                                             </>
                                     }}/>
-                                    {/* <Route exact strict path="/" component={NotesList}/>
-                                    <Route exact strict path="/new"/>
+                                    <Route exact strict path="/" component={NotesList}/>
+                                    {/* <Route exact strict path="/new"/>
                                     <Route path="/notes/show/:id" exact strict render = {(props) => {
                                         return <ShowNote {...props} handleAuth={this.handleAuth} />
                                     }}/>
