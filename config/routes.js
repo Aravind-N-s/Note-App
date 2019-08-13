@@ -10,8 +10,4 @@ router.put('/notes/:id',authenticateUser, notesController.update)
 router.delete('/notes/removeTag',authenticateUser,notesController.removeTag)
 router.delete('/notes/:id',authenticateUser, notesController.destroy)
 
-// router.get('/products', productsController.list)
-// router.get('/products/:id', productsController.show)
-// router.post('/products', productsController.create)
-
 module.exports = router

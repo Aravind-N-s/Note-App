@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from '../../config/axios'
+import axios from '../../Config/axios'
 
 
 

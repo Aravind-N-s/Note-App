@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from '../../config/axios'
+import axios from '../../Config/axios'
 import {Link} from 'react-router-dom'
 
 class NotesList extends React.Component {
