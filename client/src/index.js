@@ -98,7 +98,7 @@ class App extends React.Component {
                                 <Route exact strict path="/users/account"/>
                                 <Route path="/users/logout" render = {(props) => {
                                     return <>
-                                        <NotesLogout {...props} handleAuth={this.handleAuth} />
+                                        <NotesLogout {...props} handleAuth={this.handleAuth}/>
                                         <Redirect to="/"/>                     
                                         </>
                                 }}/>
