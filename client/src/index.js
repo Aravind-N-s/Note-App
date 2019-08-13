@@ -14,7 +14,7 @@ import NotesLogout from './components/User/Logout'
 // import NotesList from './components/Notes/List'
 
 import Hello from './hello.js'
-import Test from './test.js'
+import Test from './components/test.js'
 // import CategoryList from './components/Category/List'
 // import CategoryNew from './components/Category/New'
 // import CategoryForm from './components/Category/Form'
