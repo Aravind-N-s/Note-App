@@ -95,11 +95,11 @@ class App extends React.Component {
                                     <Route path="/notes/:id" exact strict render = {(props) => {
                                         return <ShowNote {...props} handleAuth={this.handleAuth} />
                                     }}/>
-                                    <Route path="/category" component={CategoryList} exact={true}/>
-                                    <Route path="/category/new" component={CategoryNew} />  
-                                    <Route path="/category/edit/:id" render = {(props) => {
+                                    <Route path="/category" exact strict component={CategoryList}/>
+                                    <Route path="/category/new" exact strict component={CategoryNew} />  
+                                    {/* <Route path="/category/edit/:id" render = {(props) => {
                                         return <CategoryForm {...props} selectedCategory={'hello'}/>
-                                    }} exact={true}/>
+                                    }} exact={true}/> */}
                                 </>
                                 </Switch>
                             </div>
