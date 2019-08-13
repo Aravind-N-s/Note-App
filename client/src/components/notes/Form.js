@@ -51,7 +51,6 @@ class NotesForm extends React.Component{
                 }
             })
         }
-        console.log(formData)
         this.props.handleSubmit(formData)
     }
 
@@ -97,13 +96,15 @@ class NotesForm extends React.Component{
                     placeholder = "Category"
                     onChange = {this.handleSelect}
                     options={
-                        this.state.categories.map((category) => {
-                            return{
-                                value : category._id,
-                                label : category.name,
-                                name : 'category'
-                            }
-                        })
+                        this.state.category && (
+                            this.state.categories.map((category) => {
+                                return{
+                                    value : category._id,
+                                    label : category.name,
+                                    name : 'category'
+                                }
+                            })
+                        )
                     }
                 /><br/>
                 <label >
@@ -119,13 +120,15 @@ class NotesForm extends React.Component{
                     isClearable = "true"
                     onChange={this.handleTagSelect}
                     options={
-                        this.state.tags.map((tag) => {
-                            return {
-                                value : tag._id,
-                                label : tag.name,
-                                name : 'tag'
-                            }
-                        })
+                        this.state.tags && (
+                            this.state.tags.map((tag) => {
+                                return {
+                                    value : tag._id,
+                                    label : tag.name,
+                                    name : 'tag'
+                                }
+                            })
+                        )
                     }
                 />
                 <br />

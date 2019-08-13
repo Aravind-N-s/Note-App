@@ -30,9 +30,8 @@ class NoteEdit extends React.Component{
             }
         })
             .then(response =>{
-                console.log(response)
                 if(response.data.hasOwnProperty('errors')){
-                    console.log(response.data.errors)
+                    alert(response.data.errors)
                 }
                 else {
                     this.props.history.push(`/notes`)

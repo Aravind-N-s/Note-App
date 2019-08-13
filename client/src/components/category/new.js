@@ -15,14 +15,14 @@ class CategoryNew extends React.Component{
         })
         .then(response => {
             if(response.data.hasOwnProperty('errors')){
-                console.log(response.data.errors)
+                alert.log(response.data.errors)
             }
             else {
                 this.props.history.push(`/category`)
             }
         })
         .catch((err) => {
-            console.log(err)
+            alert(err)
         })
     }
     render(){

@@ -23,7 +23,7 @@ class CategoryList extends React.Component{
         })
         .then(response =>{
             if(response.data.hasOwnProperty('errors')){
-                console.log(response.data.errors)
+               alert(response.data.errors)
             }
             else {
                 this.props.history.push(`/category`)
@@ -32,7 +32,6 @@ class CategoryList extends React.Component{
     }
 
     handleEdit(e){
-        console.log(e)
         const id = e
         axios.get(`/categories/${id}`,{
             headers:{
@@ -74,12 +73,11 @@ class CategoryList extends React.Component{
             })
     }
     render(){
-        console.log(this.state.selectCategory.category)
         return(
             <div className = "container">   
                 {_.isEmpty(this.state.selectCategory) ? (
                     <>
-                    <ul style={{textTransform: "capitalize"}} className = "list-group">
+                    <ul style={{textTransform: "capitalize", marginTop:"15px"}} className = "list-group">
                         {this.state.category.map(categories => {
                             return <li className = "list-group-item col-sm-4" key={categories._id}>{categories.name}
                                 <Link className="btn btn-primary" to={`/category/edit/${categories._id}`}>+</Link>
@@ -93,7 +91,7 @@ class CategoryList extends React.Component{
                         <CategoryForm handleSubmit={this.handleSubmit} selectCategory={this.state.selectCategory}/>
                     </>
                 ) }
-                
+                <Link className = "btn btn-danger" to={'/notes'}>Back</Link>
                 <Link className = "btn btn-secondary" to={'/category/new'}>New Categories</Link>
             </div>
         )

@@ -10,7 +10,6 @@ class NotesLogout extends React.Component{
         }
         })
         .then(response=>{
-            console.log(response)
             localStorage.removeItem('userAuthToken')
             this.props.handleAuth(false)
         })

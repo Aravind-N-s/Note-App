@@ -34,7 +34,6 @@ class ShowNote extends React.Component{
                 }
             })
         .then(response=>{
-            console.log(response.data)
             this.setState(()=>({
                 note:response.data
             }))
@@ -58,10 +57,10 @@ class ShowNote extends React.Component{
     }
     render(){
         return(
-            <div className="container col-md-6">            
-                <h2>{this.state.note && this.state.note.title}</h2>
-                <p>{this.state.note && this.state.note.body}</p>
-                <p>{this.state.note.category && this.state.note.category.name}</p>
+            <div style={{width:"18rem", marginTop:"10px"}} className="container card-body col-md-6 border border-dark">            
+                <h2 className="card-body">{this.state.note && this.state.note.title}</h2>
+                <p className="card-subtitle mb-2 text-muted">{this.state.note.category && this.state.note.category.name}</p>
+                <p className="card-text">{this.state.note && this.state.note.body}</p>
                 {this.props.location.pathname !== "/notes/new" && (
                     <>
                         <h5 className="list-group-item">tags: 
@@ -73,9 +72,9 @@ class ShowNote extends React.Component{
                             </ol>
                             )}
                         </h5>
-                        <Link className="btn btn-danger" to="/notes">Back</Link>
-                        <Link className="btn btn-primary"to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
-                        <button className="btn btn-danger"onClick = {this.handleRemove}>Delete</button>
+                        <Link className="btn btn-danger card-link" to="/notes">Back</Link>
+                        <Link className="btn btn-primary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
+                        <button className="btn btn-danger card-link" onClick = {this.handleRemove}>Delete</button>
                     </>
                 )}
             </div>

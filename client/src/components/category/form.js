@@ -12,14 +12,11 @@ class CategoryForm extends React.Component{
     }
 
     componentDidMount(props){
-        console.log(props, 'selectCategory')
-        !_.isEmpty(this.props.selectCategory) ? (
+        !_.isEmpty(this.props.selectCategory) && (
             this.setState(() => ({
                 name: this.props.selectCategory
             }))          
-        ) : (
-            console.log(this.state)
-        )        
+        )
     }
 
     handleChange(e){
