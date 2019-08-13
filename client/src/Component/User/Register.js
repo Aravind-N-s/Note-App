@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from '../../Config/axios'
 
-
 class NotesRegister extends React.Component{
         constructor(){
             super()
@@ -30,6 +29,8 @@ class NotesRegister extends React.Component{
         .then(response=>{
             if(response.data.errors){
                 alert(response.data.message)
+            }else {
+                alert("Proceed to login")
             }
         })
         .catch(err=> {
@@ -51,7 +52,7 @@ class NotesRegister extends React.Component{
                     <label>                                
                         <input className = "form-control" type="password" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" />
                     </label><br/>
-                    <input className="btn btn-dark" type="submit" value="Submit"/>
+                    <input className="btn btn-success" type="submit" value="Submit"/>
                 </fieldset>
             </form>
         )

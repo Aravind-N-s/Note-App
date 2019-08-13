@@ -15,11 +15,11 @@ import NotesList from './Component/Note/List'
 
 import CategoryList from './Component/Category/List'
 import CategoryNew from './Component/Category/New'
-import CategoryForm from './Component/Category/Form'
+// import CategoryForm from './Component/Category/Form'
 
 import TagsList from './Component/Tag/List'
 import TagsNew from './Component/Tag/New'
-import TagsForm from './Component/Tag/Form'
+// import TagsForm from './Component/Tag/Form'
 
 class App extends React.Component {
     constructor(props){
@@ -79,8 +79,8 @@ class App extends React.Component {
                         <Switch>
                             <>
                                 <Route exact strict path="/users/login" render={() => (<Redirect to="/"/>)} />
-                                <Route exact strict path="/users/register" render={() => (<Redirect to="/" />)} />
-                                <img src="/images/Ravanasura.jpg" className="rounded mx-auto d-block"></img>
+                                <Route exact strict path="/users/register"/>
+                                <img src="/images/Ravanasura.jpg" className="rounded mx-auto d-block"/>
                             </>
                         </Switch>
                     )}

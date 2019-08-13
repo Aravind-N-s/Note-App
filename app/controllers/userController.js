@@ -11,12 +11,12 @@ router.post('/register', (req,res) => {
     user.save()
         .then(user => {
             // res.json(user)
-            res.send(_.pick(user, ['_id','username','email','createdAt']))
+            res.json(user)
+            console.log(user,"user registered")
         })
         .catch(err =>{
             res.send(err)
         })
-
 })
 //localhost:3005/users/login
 router.post('/login', (req,res) =>{
@@ -28,6 +28,7 @@ router.post('/login', (req,res) =>{
         .then(token =>{
             // res.setHeader('x-auth',token).send({})
             res.send({token})
+            res.send(_.pick(user, ['_id','username','email','createdAt']))
         })
         .catch(err => {
             res.send(err)

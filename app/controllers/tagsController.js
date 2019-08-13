@@ -5,7 +5,9 @@ const {authenticateUser} = require('../middlewares/authentication')
 
 router.get('/',authenticateUser, (req, res) =>{
     const {user} = req
-    Tag.find()
+    Tag.find({
+        user:user._id
+    })
         .then(tags => res.json(tags))
         .catch(err=> res.json(err))
 })
