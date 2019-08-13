@@ -13,7 +13,7 @@ import NotesLogout from './components/User/Logout'
 // import ShowNote from './components/Notes/Show'
 // import NotesList from './components/Notes/List'
 
-import Hello from './components/Category/Hello'
+import Hello from './components/category/hello'
 // import CategoryList from './components/Category/List'
 // import CategoryNew from './components/Category/New'
 // import CategoryForm from './components/Category/Form'
