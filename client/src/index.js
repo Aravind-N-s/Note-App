@@ -6,16 +6,17 @@ import {BrowserRouter, Switch, Link, Route, Redirect} from 'react-router-dom'
 import NotesLogin from './components/User/Login'
 import NotesRegister from './components/User/Register'
 import NotesAccount from './components/User/Account'
-import NotesLogout from './components/User/Logout'
+// import NotesLogout from './components/User/Logout'
 
-import CategoryList from './components/Category/List'
-import CategoryNew from './components/Category/New'
-import CategoryForm from './components/Category/Form'
+// import NoteNew from  './components/Notes/New'
+// import NoteEdit from './components/Notes/Edit'
+// import ShowNote from './components/Notes/Show'
+// import NotesList from './components/Notes/List'
 
-import NoteNew from  './components/Notes/New'
-import NoteEdit from './components/Notes/Edit'
-import ShowNote from './components/Notes/Show'
-import NotesList from './components/Notes/List'
+// import CategoryList from './components/Category/List'
+// import CategoryNew from './components/Category/New'
+// import CategoryForm from './components/Category/Form'
+
 
 class App extends React.Component {
     constructor(props){
@@ -72,7 +73,16 @@ class App extends React.Component {
                 <div>
                     <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
                         <Link className ="text-dark" to="/" >My Notes App</Link>{this.handleShowAuth()}</h1>
-                        { this.state.isAuthenticated && (
+                        {!this.state.isAuthenticated &&(
+                            <Switch>
+                                <>
+                                    <Route exact strict path="/users/login" render={() => (<Redirect to="/"/>)} />
+                                    <Route exact strict path="/users/register" render={() => (<Redirect to="/" />)} />
+                                    <img src="/images/Ravanasura.jpg" className="rounded mx-auto d-block"></img>
+                                </>
+                            </Switch>
+                        )}    
+                        {/* {this.state.isAuthenticated && (
                             <div className ="container" >
                                     <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
                                         <div>
@@ -101,16 +111,7 @@ class App extends React.Component {
                                 </>
                                 </Switch>
                             </div>
-                        )}
-                        {!this.state.isAuthenticated &&(
-                            <Switch>
-                                <>
-                                    <Route exact strict path="/users/login" render={() => (<Redirect to="/"/>)} />
-                                    <Route exact strict path="/users/register" render={() => (<Redirect to="/" />)} />
-                                    <img src="/images/Ravanasura.jpg" className="rounded mx-auto d-block"></img>
-                                </>
-                            </Switch>
-                        )}                                             
+                        )}                                          */}
                 </div>
             </BrowserRouter>
         )
