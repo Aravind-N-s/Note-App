@@ -9,12 +9,12 @@ import NotesAccount from './Component/User/Account'
 import NotesLogout from './Component/User/Logout'
 
 import CategoryList from './Component/Category/List'
-// import CategoryNew from './Component/Category/New'
-// import CategoryForm from './Component/Category/Form'
+import CategoryNew from './Component/Category/New'
+import CategoryForm from './Component/Category/Form'
 
 import NoteNew from  './Component/Note/New'
-// import NoteEdit from './Component/Note/Edit'
-// import ShowNote from './Component/Note/Show'
+import NoteEdit from './Component/Note/Edit'
+import ShowNote from './Component/Note/Show'
 import NotesList from './Component/Note/List'
 
 class App extends React.Component {
@@ -99,13 +99,13 @@ class App extends React.Component {
                                 }}/>
                                 <Route exact strict path="/" component={NotesList}/>
                                 <Route exact strict path="/notes/new"/>
-                                {/* <Route path="/notes/show/:id" exact strict render = {(props) => {
+                                <Route path="/notes/show/:id" exact strict render = {(props) => {
                                     return <ShowNote {...props} handleAuth={this.handleAuth} />
-                                }}/> */}
-                                {/* <Route path="/notes/edit/:id" exact strict component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  /> */}
+                                }}/>
+                                <Route path="/notes/edit/:id" exact strict component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  />
                                 <Route path="/category" exact strict component={CategoryList}/>
-                                {/* <Route path="/category/new" exact strict component={CategoryNew} />  
-                                <Route path="/category/edit/:id" exact strict component={CategoryForm}/> */}
+                                <Route path="/category/new" exact strict component={CategoryNew} />  
+                                <Route path="/category/edit/:id" exact strict component={CategoryForm}/>
                             </>
                             </Switch>
                         </div>
