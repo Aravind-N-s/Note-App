@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from '../../Config/axios';
+import axios from '../../Config/axios'
 
 
 class NotesRegister extends React.Component{
