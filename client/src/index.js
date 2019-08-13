@@ -8,11 +8,11 @@ import NotesRegister from './Component/User/Register'
 import NotesAccount from './Component/User/Account'
 import NotesLogout from './Component/User/Logout'
 
-// import CategoryList from './Component/Category/List'
+import CategoryList from './Component/Category/List'
 // import CategoryNew from './Component/Category/New'
 // import CategoryForm from './Component/Category/Form'
 
-// import NoteNew from  './Component/Note/New'
+import NoteNew from  './Component/Note/New'
 // import NoteEdit from './Component/Note/Edit'
 // import ShowNote from './Component/Note/Show'
 import NotesList from './Component/Note/List'
