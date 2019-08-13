@@ -8,14 +8,18 @@ import NotesRegister from './Component/User/Register'
 import NotesAccount from './Component/User/Account'
 import NotesLogout from './Component/User/Logout'
 
-import CategoryList from './Component/Category/List'
-import CategoryNew from './Component/Category/New'
-import CategoryForm from './Component/Category/Form'
-
 import NoteNew from  './Component/Note/New'
 import NoteEdit from './Component/Note/Edit'
 import ShowNote from './Component/Note/Show'
 import NotesList from './Component/Note/List'
+
+import CategoryList from './Component/Category/List'
+import CategoryNew from './Component/Category/New'
+import CategoryForm from './Component/Category/Form'
+
+import TagsList from './Component/Tag/List'
+import TagsNew from './Component/Tag/New'
+import TagsForm from './Component/Tag/Form'
 
 class App extends React.Component {
     constructor(props){
@@ -69,8 +73,8 @@ class App extends React.Component {
         return (
             <BrowserRouter >
                 <div>
-                    <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
-                        <Link className ="text-dark" to="/" >My Notes App</Link>{this.handleShowAuth()}</h1>
+                    <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded bg-danger">
+                        <Link className ="btn btn-dark" to="/" ><h1>My Notes App</h1></Link>{this.handleShowAuth()}</h1>
                     {!this.state.isAuthenticated &&(
                         <Switch>
                             <>
@@ -81,13 +85,14 @@ class App extends React.Component {
                         </Switch>
                     )}
                     { this.state.isAuthenticated && (
-                        <div className ="container" >
-                                <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
+                        <div className ="container col-sm-4">
+                                <Popup trigger={<Link style={{width:180}} className="btn btn-primary btn-lg"  to ="/notes/new"><h3>Notes</h3></Link>} position = "left top" on="click">
                                     <div>
                                         <NoteNew />                                            
                                     </div>
                                 </Popup>
-                                <Link style={{marginLeft:10}} className=" btn btn-secondary btn-lg  col-md-4"  to ="/category"><h3>List Category</h3></Link>
+                                <Link style={{marginLeft:10, width:180}} className=" btn btn-secondary btn-lg"  to ="/category"><h3>Category</h3></Link>
+                                <Link style={{marginLeft:10, width:180}} className=" btn btn-dark btn-lg"  to ="/tags"><h3>Tags</h3></Link>
                             <Switch>
                             <>
                                 <Route exact strict path="/users/account"/>
@@ -105,7 +110,10 @@ class App extends React.Component {
                                 <Route path="/notes/edit/:id" exact strict component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  />
                                 <Route path="/category" exact strict component={CategoryList}/>
                                 <Route path="/category/new" exact strict component={CategoryNew} />  
-                                <Route path="/category/edit/:id" exact strict component={CategoryForm}/>
+                                {/* <Route path="/category/edit/:id" exact strict component={CategoryForm}/> */}
+                                <Route path="/tags" exact strict component={TagsList}/>
+                                <Route path="/tags/new" exact strict component={TagsNew} />  
+                                {/* <Route path="/tags/edit/:id" exact strict component={TagsForm}/> */}
                             </>
                             </Switch>
                         </div>

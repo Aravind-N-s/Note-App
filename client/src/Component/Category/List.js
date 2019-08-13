@@ -74,14 +74,14 @@ class CategoryList extends React.Component{
     }
     render(){
         return(
-            <div className = "container">   
+            <div className = "container col-md-4">   
                 {_.isEmpty(this.state.selectCategory) ? (
                     <>
                     <ul style={{textTransform: "capitalize", marginTop:"15px"}} className = "list-group">
                         {this.state.category.map(categories => {
-                            return <li className = "list-group-item col-sm-4" key={categories._id}>{categories.name}
+                            return <li className = "list-group-item bg-secondary text-white h3" key={categories._id}>{categories.name}
                                 {/* <Link className="btn btn-primary" to={`/category/edit/${categories._id}`}>+</Link> */}
-                                <button className="btn btn-danger"onClick = {() => this.handleRemove(categories._id)}>X</button>
+                                <button style={{position: "absolute", top: 10, right: 10}}className="btn pull-right btn-danger "onClick = {() => this.handleRemove(categories._id)}>X</button>
                         </li>
                     })}
                 </ul><br />
@@ -91,8 +91,7 @@ class CategoryList extends React.Component{
                         {/* <CategoryForm handleSubmit={this.handleSubmit} selectCategory={this.state.selectCategory}/> */}
                     </>
                 ) }
-                <Link className = "btn btn-danger" to={'/'}>Back</Link>
-                <Link className = "btn btn-secondary" to={'/category/new'}>New Categories</Link>
+                <Link className = "btn btn-secondary inline" to={'/category/new'}>New Categories</Link>
             </div>
         )
     }

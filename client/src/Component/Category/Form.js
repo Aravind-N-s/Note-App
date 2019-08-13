@@ -1,5 +1,6 @@
 import React from 'react'
 // import _ from 'lodash'
+import {Link} from 'react-router-dom'
 
 class CategoryForm extends React.Component{
     constructor(props){
@@ -36,13 +37,14 @@ class CategoryForm extends React.Component{
 
     render(){
         return(
-            <div className = "container input-group input-group-lg border border-secondary">
+            <div  className = "input-group input-group-lg border border-secondary bg-secondary">
                 <form onSubmit = {this.handleSubmit}>
-                    <label>
+                    <label style={{position: "relative", top: 2, right: -50}}>
                         <span className="input-group-text">Category Name</span>
                         <input type="text" name='name' onChange={this.handleChange} value={this.state.name} />
                     </label><br />
-                    <input className ="btn btn-dark"  type = "submit" />
+                    <Link style={{position: "relative", top: -2, right: "-45%"}} className="btn btn-info" to="/category">Back</Link>
+                    <input style={{position: "relative", top: -2, right: "-50%"}} className ="btn btn-dark"  type = "submit" />
                 </form>
             </div>
         )

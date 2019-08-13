@@ -41,11 +41,11 @@ class ShowNote extends React.Component{
     }
     render(){
         return(
-            <div style={{width:"18rem", marginTop:"10px"}} className="container card-body col-md-6 border border-dark bg-warning">            
+            <div style={{width:"18rem", marginTop:"10px"}} className="container card-body col-md-6 border border-dark bg-primary text-white">            
                 <h2 className="card-body">{this.state.note && this.state.note.title}</h2>
-                <p className="card-subtitle mb-2 text-muted">{this.state.note.category && this.state.note.category.name}</p>
+                <p className="card-subtitle">{this.state.note.category && this.state.note.category.name}</p>
                 <p className="card-text">{this.state.note && this.state.note.body}</p>
-                <h5 className="list-group-item">tags: 
+                <h5 className="list-group-item bg-primary">Tags: 
                     {this.state.note.tags && (
                     <ol>
                         {this.state.note.tags.map((tagItem=>{
@@ -54,8 +54,8 @@ class ShowNote extends React.Component{
                     </ol>
                     )}
                 </h5>
-                <Link className="btn btn-danger card-link" to="/">Back</Link>
-                <Link className="btn btn-primary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
+                <Link className="btn btn-dark card-link" to="/">Back</Link>
+                <Link className="btn btn-secondary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
                 <button className="btn btn-danger card-link" onClick = {this.handleRemove}>Delete</button>
             </div>
         )        
