@@ -6,8 +6,13 @@ import {Redirect} from 'react-router-dom'
 class NotesNew extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            serverErrors: '',
+            submit: false
+        }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
     handleSubmit(formData){
         axios.post('/notes', formData,{
             headers:{
@@ -16,18 +21,24 @@ class NotesNew extends React.Component{
         })
         .then(response => {
             if(response.data.hasOwnProperty('errors')) {
-				console.log(response.data.errors)
+				alert(response.data.errors)
 				this.setState(() => ({
 					serverErrors: response.data.errors
 				}))
+            }else {
+                this.setState(() => ({
+                    submit : true
+                }))
             }
-            return <Redirect exact strict to="/notes" />            
         })
         .catch((err) => {
             alert(err, "errors")
         })
     }
-    render(){
+    render(props){
+        if(this.state.submit){
+            return <Redirect to="/" />
+        }
         return(
             <div>
                 <NotesForm handleSubmit={this.handleSubmit}/>

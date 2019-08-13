@@ -34,13 +34,13 @@ class NoteEdit extends React.Component{
                     alert(response.data.errors)
                 }
                 else {
-                    this.props.history.push(`/notes`)
+                    this.props.history.push(`/`)
                 }
             })
     }
     render(){
         return(
-            <div>
+            <div style={{marginTop:"10px"}}className="container col-md-6 border border-dark" >
                 <h2>Edit Here</h2>
                 <NoteForm handleSubmit={this.handleSubmit} note={this.state.note}/>
             </div>

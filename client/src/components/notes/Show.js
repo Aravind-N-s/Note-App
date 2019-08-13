@@ -9,7 +9,6 @@ class ShowNote extends React.Component{
             note: {}
         }
         this.handleRemove = this.handleRemove.bind(this)
-        this.handleRemoveTag=this.handleRemoveTag.bind(this)
     }
 
     componentDidMount(props){
@@ -26,21 +25,6 @@ class ShowNote extends React.Component{
         })
     }
 
-    handleRemoveTag(tag){
-        const id=this.props.match.params.id
-        axios.delete(`/notes/removeTag?noteId=${id}&tagId=${tag._id}`,{ 
-            headers:{
-                'x-auth':localStorage.getItem('userAuthToken')
-                }
-            })
-        .then(response=>{
-            this.setState(()=>({
-                note:response.data
-            }))
-         
-        })
-    }
-
     handleRemove(e){
         const id = this.props.match.params.id
         const confirmRemove = window.confirm("Are You Sure?")
@@ -51,32 +35,28 @@ class ShowNote extends React.Component{
                 }
             })
             .then(() => {
-                this.props.history.push('/notes')
+                this.props.history.push('/')
             })
         }
     }
     render(){
         return(
-            <div style={{width:"18rem", marginTop:"10px"}} className="container card-body col-md-6 border border-dark">            
+            <div style={{width:"18rem", marginTop:"10px"}} className="container card-body col-md-6 border border-dark bg-warning">            
                 <h2 className="card-body">{this.state.note && this.state.note.title}</h2>
                 <p className="card-subtitle mb-2 text-muted">{this.state.note.category && this.state.note.category.name}</p>
                 <p className="card-text">{this.state.note && this.state.note.body}</p>
-                {this.props.location.pathname !== "/notes/new" && (
-                    <>
-                        <h5 className="list-group-item">tags: 
-                            {this.state.note.tags && (
-                            <ol>
-                                {this.state.note.tags.map((tagItem=>{
-                                    return <li key={tagItem._id}>{tagItem.tag.name}<button onClick={()=>{this.handleRemoveTag(tagItem)}}>x</button></li>
-                                }))}
-                            </ol>
-                            )}
-                        </h5>
-                        <Link className="btn btn-danger card-link" to="/">Back</Link>
-                        <Link className="btn btn-primary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
-                        <button className="btn btn-danger card-link" onClick = {this.handleRemove}>Delete</button>
-                    </>
-                )}
+                <h5 className="list-group-item">tags: 
+                    {this.state.note.tags && (
+                    <ol>
+                        {this.state.note.tags.map((tagItem=>{
+                            return <li key={tagItem._id}>{tagItem.tag.name}</li>
+                        }))}
+                    </ol>
+                    )}
+                </h5>
+                <Link className="btn btn-danger card-link" to="/">Back</Link>
+                <Link className="btn btn-primary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
+                <button className="btn btn-danger card-link" onClick = {this.handleRemove}>Delete</button>
             </div>
         )        
     }

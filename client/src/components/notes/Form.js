@@ -133,7 +133,6 @@ class NotesForm extends React.Component{
                 <br />
                 <center><input className="btn btn-outline-danger" type='submit' /></center>
             </form>
-           
         )
     }
 }
