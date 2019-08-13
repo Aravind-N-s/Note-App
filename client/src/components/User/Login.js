@@ -34,7 +34,7 @@ class NotesLogin extends React.Component{
                 if(token){
                     localStorage.setItem('userAuthToken',token)
                     this.props.handleAuth(true)
-                    this.props.history.push = ('/notes')
+                    // this.props.history.push = ('/notes')
                 }
             }
         })

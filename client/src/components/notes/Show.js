@@ -72,7 +72,7 @@ class ShowNote extends React.Component{
                             </ol>
                             )}
                         </h5>
-                        <Link className="btn btn-danger card-link" to="/notes">Back</Link>
+                        <Link className="btn btn-danger card-link" to="/">Back</Link>
                         <Link className="btn btn-primary card-link" to={`/notes/edit/${this.props.match.params.id}`}>Edit</Link>
                         <button className="btn btn-danger card-link" onClick = {this.handleRemove}>Delete</button>
                     </>

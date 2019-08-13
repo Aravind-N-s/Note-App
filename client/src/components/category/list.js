@@ -2,17 +2,17 @@ import React from 'react'
 import _ from 'lodash'
 import axios from '../../config/axios'
 import {Link} from 'react-router-dom'
-import CategoryForm from './Form'
+// import CategoryForm from './Form
 
 class CategoryList extends React.Component{
     constructor(){
         super()
         this.state = {
             category: [],
-            selectCategory: {}
+            // selectCategory: {}
         }
         this.handleRemove = this.handleRemove.bind(this)
-        this.handleEdit = this.handleEdit.bind(this)
+        // this.handleEdit = this.handleEdit.bind(this)
     }
 
     handleSubmit(formData){
@@ -31,19 +31,19 @@ class CategoryList extends React.Component{
         })
     }
 
-    handleEdit(e){
-        const id = e
-        axios.get(`/categories/${id}`,{
-            headers:{
-                'x-auth':localStorage.getItem('userAuthToken')
-            }
-        })
-        .then(response=>{
-            this.setState(() => ({
-                selectCategory: response.data
-            }))
-        })
-    }
+    // handleEdit(e){
+    //     const id = e
+    //     axios.get(`/categories/${id}`,{
+    //         headers:{
+    //             'x-auth':localStorage.getItem('userAuthToken')
+    //         }
+    //     })
+    //     .then(response=>{
+    //         this.setState(() => ({
+    //             selectCategory: response.data
+    //         }))
+    //     })
+    // }
 
     handleRemove(e){
         const id = e
@@ -55,7 +55,7 @@ class CategoryList extends React.Component{
                 }
             })
             .then(() => {
-                this.props.history.push('/category')
+                this.props.history.push('/')
             })
         }
     }
@@ -80,7 +80,7 @@ class CategoryList extends React.Component{
                     <ul style={{textTransform: "capitalize", marginTop:"15px"}} className = "list-group">
                         {this.state.category.map(categories => {
                             return <li className = "list-group-item col-sm-4" key={categories._id}>{categories.name}
-                                <Link className="btn btn-primary" to={`/category/edit/${categories._id}`}>+</Link>
+                                {/* <Link className="btn btn-primary" to={`/category/edit/${categories._id}`}>+</Link> */}
                                 <button className="btn btn-danger"onClick = {() => this.handleRemove(categories._id)}>X</button>
                         </li>
                     })}
@@ -88,10 +88,10 @@ class CategoryList extends React.Component{
                     </>
                 ) : (
                     <>
-                        <CategoryForm handleSubmit={this.handleSubmit} selectCategory={this.state.selectCategory}/>
+                        {/* <CategoryForm handleSubmit={this.handleSubmit} selectCategory={this.state.selectCategory}/> */}
                     </>
                 ) }
-                <Link className = "btn btn-danger" to={'/notes'}>Back</Link>
+                <Link className = "btn btn-danger" to={'/'}>Back</Link>
                 <Link className = "btn btn-secondary" to={'/category/new'}>New Categories</Link>
             </div>
         )

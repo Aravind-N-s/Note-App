@@ -58,8 +58,7 @@ class NotesForm extends React.Component{
         this.setState(() => ({
             title: nextProps.note.title,
             body: nextProps.note.body,
-            category: nextProps.note.category._id,
-            tags: nextProps.note.tags._id
+            category: nextProps.note.category._id
         }))
     }
 
@@ -96,7 +95,7 @@ class NotesForm extends React.Component{
                     placeholder = "Category"
                     onChange = {this.handleSelect}
                     options={
-                        this.state.category && (
+                        this.state.categories && (
                             this.state.categories.map((category) => {
                                 return{
                                     value : category._id,

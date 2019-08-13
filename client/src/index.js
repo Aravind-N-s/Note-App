@@ -71,7 +71,7 @@ class App extends React.Component {
             <BrowserRouter>
                 <div>
                     <h1 className="navbar font-italic font-weight-bold shadow-lg p-3 mb-5 rounded" >
-                        <Link className ="text-dark" to="/notes" >My Notes App</Link>{this.handleShowAuth()}</h1>
+                        <Link className ="text-dark" to="/" >My Notes App</Link>{this.handleShowAuth()}</h1>
                         { this.state.isAuthenticated && (
                             <div className ="container" >
                                     <Popup trigger={<Link className=" btn btn-primary btn-lg  col-md-4"  to ="/notes/new"><h3> New Notes</h3></Link>} position = "right top" on="click">
@@ -88,8 +88,8 @@ class App extends React.Component {
                                             <Redirect to="/"/>
                                             </>
                                     }}/>
-                                    <Route exact strict path="/users/account" render={() => (<Redirect to="/notes"/>)} />
-                                    <Route exact path="/notes" component={NotesList}/>
+                                    <Route exact strict path="/users/account"/>
+                                    <Route exact path="/" component={NotesList}/>
                                     <Route exact strict path="/notes/new"/>
                                     <Route path="/notes/edit/:id" exact component={NoteEdit} render={() => (<Redirect to="/notes/:id"/>)}  />
                                     <Route path="/notes/:id" exact strict render = {(props) => {
@@ -107,7 +107,7 @@ class App extends React.Component {
                         {!this.state.isAuthenticated &&(
                             <Switch>
                                 <>
-                                    <Route exact path="/users/login" render={() => (<Redirect to="/notes" />)} />
+                                    <Route exact path="/users/login" render={() => (<Redirect to="/" />)} />
                                     <Route exact path="/users/register" render={() => (<Redirect to="/" />)} />
                                 </>
                             </Switch>
