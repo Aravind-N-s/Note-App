@@ -14,6 +14,7 @@ import NotesLogout from './components/User/Logout'
 // import NotesList from './components/Notes/List'
 
 import Hello from './components/category/hello'
+import Test from './components/category/hello'
 // import CategoryList from './components/Category/List'
 // import CategoryNew from './components/Category/New'
 // import CategoryForm from './components/Category/Form'
@@ -23,8 +24,7 @@ class App extends React.Component {
     constructor(props){
         super(props)
         this.state={
-            isAuthenticated: false,
-            notes: []
+            isAuthenticated: false
         }
         this.handleAuth=this.handleAuth.bind(this)
         this.handleShowAuth=this.handleShowAuth.bind(this)
@@ -48,6 +48,7 @@ class App extends React.Component {
                     <div className ="container">
                         <Popup trigger={<Link className="btn btn-success" to="/users/register">Register</Link>} position="left top"on="hover">
                             <div>
+                                <Test />
                                 <NotesRegister />
                             </div>
                         </Popup> <br/>
